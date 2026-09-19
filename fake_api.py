@@ -52,6 +52,22 @@ def create_courier():
     return jsonify(new_courier), 201
 
 
+@app.route("/api/couriers/<int:courier_id>", methods=["PATCH"])
+def update_courier(courier_id):
+    """Частичное обновление курьера."""
+    auth_error = _check_auth()
+    if auth_error:
+        return auth_error
+    courier = _couriers.get(courier_id)
+    if courier is None:
+        return jsonify({"error": "Courier not found"}), 404
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "Bad request"}), 400
+    courier.update(data)
+    return jsonify(courier), 200
+
+
 @app.route("/api/couriers/<int:courier_id>", methods=["DELETE"])
 def delete_courier(courier_id):
     auth_error = _check_auth()

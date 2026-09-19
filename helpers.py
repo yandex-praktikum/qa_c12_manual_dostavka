@@ -1,6 +1,6 @@
 """
-Модуль с процедурными функциями-хелперами для работы с API курьеров.
-Необъодимо перенести эту логику в класс CourierAPIClient в api_client.py.
+Процедурные хелперы из предыдущего спринта.
+Тесты используют CourierAPIClient из api_client.py.
 """
 import os
 import requests

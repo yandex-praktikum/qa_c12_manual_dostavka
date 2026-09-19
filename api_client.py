@@ -26,15 +26,6 @@ class CourierAPIClient:
         response.raise_for_status()
         return response.json()
 
-    def update_courier(self, courier_id: int, data: dict):
-        """Обновляет данные курьера (частичное обновление)."""
-        url = f"{self.base_url}/couriers/{courier_id}"
-        headers = self._get_auth_header()
-        headers["Content-Type"] = "application/json"
-        response = requests.patch(url, headers=headers, json=data)
-        response.raise_for_status()
-        return response.json()
-
     def delete_courier(self, courier_id: int):
         url = f"{self.base_url}/couriers/{courier_id}"
         headers = self._get_auth_header()
